@@ -1,0 +1,24 @@
+-- PART 1: BASIC QUESTIONS
+
+
+-- Q1: Display first and last name from table actor
+SELECT first_name, last_name FROM actor;
+
+-- Q2: Display all actors whos last name is Hrris 
+SELECT actor_id, first_name, last_name FROM actor WHERE last_name = 'HARRIS';
+-- OR --
+SELECT actor_id, first_name, last_name FROM actor WHERE last_name LIKE 'HARRIS';
+
+-- Q3: Display all name together as a single name 
+SELECT concat(first_name, '  ', last_name) as full_name  FROM actor;
+
+-- Q4: Display ID name, first name and last name of an actor where first name is NICK
+SELECT actor_id, first_name, last_name FROM actor WHERE first_name = 'NICK';
+
+-- Q5: How many distinct actors last name are there?
+
+-- Q6: Display only those last_name which are not repetating
+SELECT last_name FROM actor GROUP BY last_name HAVING count(last_name) =1;
+
+-- Q7: Which last names appear more than once
+SELECT last_name FROM actor GROUP BY last_name HAVING count(last_name)>1;
