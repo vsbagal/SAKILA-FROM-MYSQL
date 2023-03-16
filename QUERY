@@ -39,3 +39,11 @@ GROUP BY a.actor_id ORDER BY film_count DESC LIMIT 1;
 
 -- Q3: What is the average length of all the films inthe sakila DB?
 SELECT avg(length) FROM film;
+
+-- Q4: What is the average length of films by category? 
+SELECT avg(t1.length) as avg_len, c.name  FROM
+(SELECT f.film_id, f.title, f.length, fc.category_id FROM 
+film f LEFT JOIN film_category fc
+ON f.film_id = fc.film_id ) as t1
+LEFT JOIN category c ON t1.category_id = c.category_id 
+GROUP BY name  ORDER BY avg_len DESC;
