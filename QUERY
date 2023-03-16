@@ -47,3 +47,11 @@ film f LEFT JOIN film_category fc
 ON f.film_id = fc.film_id ) as t1
 LEFT JOIN category c ON t1.category_id = c.category_id 
 GROUP BY name  ORDER BY avg_len DESC;
+
+-- Q5: Which film categories are longer than overall average movie length?
+SELECT avg(t1.length) as avg_len, c.name  FROM
+(SELECT f.film_id, f.title, f.length, fc.category_id FROM 
+film f LEFT JOIN film_category fc
+ON f.film_id = fc.film_id ) as t1
+LEFT JOIN category c ON t1.category_id = c.category_id 
+GROUP BY name  HAVING avg_len > (select avg(length) from film );
