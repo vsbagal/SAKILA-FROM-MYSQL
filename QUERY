@@ -36,3 +36,6 @@ SELECT a.actor_id, concat(a.first_name, " ", last_name)
 as full_name, count(film_id) as film_count
 FROM actor a LEFT JOIN film_actor fa ON a.actor_id = fa.actor_id
 GROUP BY a.actor_id ORDER BY film_count DESC LIMIT 1;
+
+-- Q3: What is the average length of all the films inthe sakila DB?
+SELECT avg(length) FROM film;
