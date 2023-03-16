@@ -30,3 +30,9 @@ SELECT last_name FROM actor GROUP BY last_name HAVING count(last_name)>1;
 SELECT staff.first_name, staff.last_name, address.address FROM staff
 LEFT JOIN address 
 ON staff.address_id = address.address_id;
+
+-- Q2: Which actor has appeared in most films?
+SELECT a.actor_id, concat(a.first_name, " ", last_name) 
+as full_name, count(film_id) as film_count
+FROM actor a LEFT JOIN film_actor fa ON a.actor_id = fa.actor_id
+GROUP BY a.actor_id ORDER BY film_count DESC LIMIT 1;
