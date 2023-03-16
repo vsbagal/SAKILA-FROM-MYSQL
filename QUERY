@@ -22,3 +22,11 @@ SELECT last_name FROM actor GROUP BY last_name HAVING count(last_name) =1;
 
 -- Q7: Which last names appear more than once
 SELECT last_name FROM actor GROUP BY last_name HAVING count(last_name)>1;
+
+
+-- PART 2: INTERMEDIATE QUESTIONS
+
+-- Q1: Display first_name, last_name and address of all staff
+SELECT staff.first_name, staff.last_name, address.address FROM staff
+LEFT JOIN address 
+ON staff.address_id = address.address_id;
